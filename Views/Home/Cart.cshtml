@@ -1,0 +1,39 @@
+@model List<Prodotto>;
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Riepilogo ordine</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Quantità</th>
+                <th>Prodotti</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                try {
+                    if (@Model != null)
+                    {
+                        foreach ( Prodotto item in Model)
+                        {
+                            <tr>
+                                <td>@item.quantita</td>
+                                <td>@item._NomeP</td>
+                            </tr>
+                        }
+                    }
+                }
+                catch(NullReferenceException ex){
+                    Console.WriteLine($"ERRORE: {ex.Message}");
+                    <tr>
+                        <td>ERRORE</td>
+                        <td>ERRORE</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

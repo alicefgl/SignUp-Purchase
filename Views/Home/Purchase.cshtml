@@ -1,0 +1,91 @@
+@model Prodotto;
+@{
+    ViewData["Title"] = "Purchase";
+}
+<style>
+img {
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 150px;
+  shadow: 2px 2px 5px black;
+}
+
+button:hover {
+  box-shadow: 0 0 2px 1px black;
+}
+
+</style>
+<script>
+    function qa(id){
+        click = parseInt(document.getElementById(id).value);
+        click += 1;
+        document.getElementById(id).value = click;
+        countP = document.getElementById("elemC").innerHTML;
+        countP++;
+        document.getElementById("elemC").innerText = countP;
+    }
+
+    function qr(id){
+        click = parseInt(document.getElementById(id).value);
+        click -= 1;
+        if(click <= 0){
+            click = 0;
+        }
+        document.getElementById(id).value = click;
+        countP = document.getElementById("elemC").innerHTML;
+        countP--;
+        document.getElementById("elemC").innerText = countP;
+    }
+
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">Raspberry</h1>
+
+    <form class="m-2" method="post" asp-action="Cart">
+        <div class="Prod">
+            <input type="text" asp-for="@Model._NomeP" value="Raspberry_Pi_Pico" readonly><br>
+            <img src="/raspberry_pi_pico.jpg"><br>
+            <div id="primoP">
+                <input type="text" asp-for="@Model.quantita" id="prod1" value="0" readonly>
+            </div>
+            <button type="button" onclick="qa('prod1')">+</button>
+            <button type="button" onclick="qr('prod1')">-</button>
+        </div>
+        <br>
+        <div class="Prod">
+            <input type="text" asp-for="@Model._NomeP" value="Raspberry_Pi_Pico_W" readonly><br>
+            <img src="/raspberry_pi_pico_w.jpg"><br>
+            <div id="secondoP">
+                <input type="text" asp-for="@Model.quantita" id="prod2" value="0" readonly>
+            </div>
+            <button type="button" onclick="qa('prod2')">+</button>
+            <button type="button" onclick="qr('prod2')">-</button>
+        </div>
+        <br>
+        <div class="Prod">
+            <input type="text" asp-for="@Model._NomeP" value="Raspberry_RP2040_Zero" readonly><br>
+            <img src="/waveshare_rp2040_zero.jpg"><br>
+            <div id="terzoP">
+                <input type="text" asp-for="@Model.quantita" id="prod3" value="0" readonly>
+            </div>
+            <button type="button" onclick="qa('prod3')">+</button>
+            <button type="button" onclick="qr('prod3')">-</button>
+            </div>
+        <br>
+        <div class="Prod">
+            <input type="text" asp-for="@Model._NomeP" value="MacroPad_RP2040" readonly><br>
+            <img src="/adafruit_macropad_rp2040.jpg"><br>
+            <div id="quartoP">
+                <input type="text" asp-for="@Model.quantita" id="prod4" value="0" readonly>
+            </div>
+            <button type="button" onclick="qa('prod4')">+</button>
+            <button type="button" onclick="qr('prod4')">-</button>
+        </div>
+
+        <br>
+        <p>Elementi nel carrello:</p>
+        <div id="elemC">0</div>
+        <button type="submit">Visualizza carrello</button>
+    </form>
+</div>

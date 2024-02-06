@@ -1,0 +1,13 @@
+@model List<Prenotazione>;
+@{
+    ViewData["Title"] = "Conferma";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Riepilogo</h1>
+        @{
+            foreach(var item in @Model){
+                <p> Nome: @item.Nome <br> Cognome @item.Cognome <br> Email: @item.Email <br> Data di nascita: @item.DataDiNascita <br> Sesso: @item._Sesso <br> Ruolo: @item._Ruolo</p>
+            }
+        }
+</div>
